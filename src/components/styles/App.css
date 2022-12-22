@@ -3,3 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.btn-primary {
+
+    padding: 5px;
+    background: white;
+    border-color: #004445;
+    border-radius: 10px;
+}

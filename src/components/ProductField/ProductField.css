@@ -1,0 +1,10 @@
+.product-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    background: #004445;
+    border: 2px solid #021C1E;
+    border-radius: 10px;
+}

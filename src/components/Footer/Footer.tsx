@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
 
             <div>
-                <a style={{color: 'white'}} href="">GitHub Timofei</a>
+                <a style={{color: 'white'}} href="https://github.com/Tipok-1">GitHub Timofei</a>
             </div>
 
             <div style={{color: 'white'}}>2022</div>
