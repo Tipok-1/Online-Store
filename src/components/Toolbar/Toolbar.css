@@ -2,9 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column-reverse;
     padding: 15px;
     width: 100%;
-    background: #004445;
+    background: #2C7873;
     border: 2px solid #021C1E;
     border-radius: 10px;
     width: 35%;
