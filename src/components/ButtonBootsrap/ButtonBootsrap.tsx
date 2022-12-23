@@ -9,7 +9,7 @@ const ButtonBootstrap = ({children}) => {
     return (
         <div>
             <ButtonGroup aria-label="Basic example">
-                <Button type="button" class="btn btn-primary">{children}</Button>
+                <Button style={{cursor: 'pointer'}} type="button" class="btn btn-primary">{children}</Button>
             </ButtonGroup>
         </div>
     )

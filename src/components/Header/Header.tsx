@@ -7,9 +7,9 @@ import Logo from "../Logo/Logo";
 const Header = () => {
     return (
         <div className='header'>
-            <Logo/>
-            <CardTotal/>
-            <Basket/>
+            <Logo />
+            <CardTotal />
+            <Basket />
         </div>
     )
 }

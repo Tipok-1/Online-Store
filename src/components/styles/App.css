@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.wrapper {
+    width: 1200px;
+}
+
 .btn-primary {
 
     padding: 5px;
