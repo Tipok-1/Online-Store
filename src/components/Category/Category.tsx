@@ -2,16 +2,21 @@ import React from "react";
 import OneCategory from "../OneCategory/OneCategory";
 import './Category.css'
 import categoriesCategory from '../helpers'
+import { data } from "../products";
 
-const Category = ({ children }) => {
+const Category = () => {
 
     return (
         <div className='category'>
-            <div className='categories__title'>{children}</div>
+            <div className='categories__title'>Category</div>
             <div className='categories__field'>
-                <OneCategory>1</OneCategory>
-                <OneCategory>1</OneCategory>
-                <OneCategory>1</OneCategory>
+            {data.products.map(product => {
+                return (
+                    <OneCategory
+                        category={product.category}
+                    />
+                )
+            })}
             </div>
         </div >
     )

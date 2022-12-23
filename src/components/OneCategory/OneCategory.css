@@ -1,4 +1,10 @@
-label {
+
+.categories {
+    width: 200px;
+    
+}
+
+.categories__name {
     color: white;
-    margin-left: 1px;
+    margin-left: 3px;
 }

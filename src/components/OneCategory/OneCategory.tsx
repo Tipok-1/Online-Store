@@ -1,11 +1,11 @@
 import React from "react";
 import '../OneCategory/OneCategory.css'
 
-const OneCategory = ({children}) => {
+const OneCategory = ({category}) => {
     return (
-        <label>
+        <label className="categories">
             <input type="checkbox" id="{children}"/>
-            <label htmlFor="{children}">{children}</label>
+            <label className="categories__name" htmlFor="{children}">{category}</label>
         </label>
     )
 }
