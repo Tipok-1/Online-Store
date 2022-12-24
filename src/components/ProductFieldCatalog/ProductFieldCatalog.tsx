@@ -9,11 +9,6 @@ import SortOptions from "../SortOptions/SortOptions";
 
 const ProductFieldCatalog = () => {
 
-    // const getProducts = data.products.map(product => product.title)
-    // console.log(getProducts);
-
-
-    //get data, mapping , props
     return (
         <div className='product-field-catalog'>
             {data.products.map(product => {
@@ -27,6 +22,7 @@ const ProductFieldCatalog = () => {
                         rating={product.rating}
                         stock={product.stock}
                         thumbnail={product.thumbnail}
+                        id={product.id}
                     />
                 )
             })}

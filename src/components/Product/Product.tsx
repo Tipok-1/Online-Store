@@ -1,10 +1,11 @@
 import React from "react";
 import ButtonBootstrap from "../ButtonBootsrap/ButtonBootsrap";
 import '../Product/Product.css'
+import { useNavigate } from "react-router-dom";
 
 
-const Product = ({title, category, brand, price, discount, rating, stock, thumbnail}) => {
-
+const Product = ({title, category, brand, price, discount, rating, stock, thumbnail, id}) => {
+    const router = useNavigate()
 
     return (
         <div className='product'>
@@ -21,7 +22,9 @@ const Product = ({title, category, brand, price, discount, rating, stock, thumbn
             <div className="product-btns">
 
             <ButtonBootstrap>ADD TO CARD</ButtonBootstrap>
-            <ButtonBootstrap>DETAILS</ButtonBootstrap>
+            <button class="btn btn-primary"
+                onClick={() => router(`/product/${id}`)}
+            >DETAILS</button>
             </div>
         </div>
     )

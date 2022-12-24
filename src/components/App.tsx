@@ -1,14 +1,21 @@
 import React from 'react';
 import MainPage from './pages/MainPage';
-import './styles/App.css'
+import './styles/App.css';
+import { Routes, Route, useNavigate, useLocation, useHistory } from 'react-router-dom';
+import StartPage from './pages/ProductPage';
+import ProductPage from './pages/ProductPage';
 
-const App = () => {
+
+export default function App() {
+
 
     return (
-        <div>
-            <MainPage/>
-        </div>
+        
+        <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="product/:id" element={<ProductPage />} />
+            <Route path="*" element={<StartPage />} />
+        </Routes>
+
     );
 };
-
-export default App;
