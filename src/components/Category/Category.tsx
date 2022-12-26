@@ -12,6 +12,7 @@ const Category = (): JSX.Element => {
             {data.products.map(product => {
                 return (
                     <OneCategory
+                        key={product.id}
                         category={product.category}
                     />
                 )

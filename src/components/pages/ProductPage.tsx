@@ -1,16 +1,26 @@
 import React from "react";
-import { useParams } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Product from "../Product/Product";
-import { data } from "../products";
+import {data}  from "../products";
 import { IProduct } from "../types";
 
 
 const ProductPage = (): JSX.Element => {
-    const params: Params<string> = useParams()
-
-    const currentProduct: IProduct | undefined = data.products.find((product) => product.id == params.id);
+    type QuizParams = {
+        id: string;
+    }; 
+    const { id } = useParams<QuizParams>();
+    let currentProduct: IProduct | undefined;
+    console.log(id);
+    if(id !== undefined)
+    {
+        currentProduct = data.products.find((product) => product.id == +id);
+    }
+    /*const params: Params<string> = useParams()
+    console.log(params);
+    const currentProduct: IProduct | undefined = data.products.find((product) => product.id == params.id);*/
 
     return (
         <div className="product-page">
