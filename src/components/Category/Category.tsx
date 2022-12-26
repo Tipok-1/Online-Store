@@ -1,10 +1,9 @@
 import React from "react";
 import OneCategory from "../OneCategory/OneCategory";
 import './Category.css'
-import categoriesCategory from '../helpers'
 import { data } from "../products";
 
-const Category = () => {
+const Category = (): JSX.Element => {
 
     return (
         <div className='category'>

@@ -4,7 +4,7 @@ import '../Footer/Footer.css'
 
 
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
     return (
         <div className="footer">
             <div style={{background: 'white', padding: 10, borderRadius: 10, cursor: 'pointer'}}>

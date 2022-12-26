@@ -2,7 +2,7 @@ import React from "react";
 import '../ProductInfoItem/ProductInfoItem.css'
 
 
-const ProductInfoItem = () => {
+const ProductInfoItem = (): JSX.Element => {
     return (
         <div className='product-info-item'>
             <p>Category: "smartphones"</p>

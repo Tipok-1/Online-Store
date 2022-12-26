@@ -4,7 +4,7 @@ import '../ProductFieldHeader/ProductFieldHeader.css'
 import SearchProduct from "../SearchProduct/SearchProduct";
 import SortOptions from "../SortOptions/SortOptions";
 
-const ProductFieldHeader = () => {
+const ProductFieldHeader = (): JSX.Element => {
     return (
         <div className='product-field-header'>
             <SortOptions/>

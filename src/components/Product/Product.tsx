@@ -1,10 +1,10 @@
 import React from "react";
-import ButtonBootstrap from "../ButtonBootsrap/ButtonBootsrap";
 import '../Product/Product.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { IProduct } from "../types";
 
 
-const Product = ({title, category, brand, price, discount, rating, stock, thumbnail, id}) => {
+const Product = ({ title, category, brand, price, discountPercentage, rating, stock, thumbnail, id }: IProduct): JSX.Element => {
     const router = useNavigate()
 
     return (
@@ -15,16 +15,18 @@ const Product = ({title, category, brand, price, discount, rating, stock, thumbn
                 <p>Category: {category}</p>
                 <p>Brand: {brand}</p>
                 <p>Price: {price}</p>
-                <p>Discount: {discount}</p>
+                <p>Discount: {discountPercentage}</p>
                 <p>Rating: {rating}</p>
                 <p>Stock: {stock}</p>
             </div>
             <div className="product-btns">
 
-            <ButtonBootstrap>ADD TO CARD</ButtonBootstrap>
-            <button class="btn btn-primary"
-                onClick={() => router(`/product/${id}`)}
-            >DETAILS</button>
+                <button className="btn btn-primary"
+                    // onClick={() => router(`/basket`)}
+                >ADD TO CARD</button>
+                <button className="btn btn-primary"
+                    onClick={() => router(`/product/${id}`)}
+                >DETAILS</button>
             </div>
         </div>
     )

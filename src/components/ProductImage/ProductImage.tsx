@@ -3,7 +3,7 @@ import '../ProductImage/ProductImage.css'
 import ProductInfoItem from "../ProductInfoItem/ProductInfoItem";
 
 
-const ProductImage = () => {
+const ProductImage = (): JSX.Element => {
     return (
         <div className='product__image'>
             <ProductInfoItem/>

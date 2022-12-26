@@ -7,7 +7,7 @@ import SearchProduct from "../SearchProduct/SearchProduct";
 import SortOptions from "../SortOptions/SortOptions";
 
 
-const ProductFieldCatalog = () => {
+const ProductFieldCatalog = (): JSX.Element => {
 
     return (
         <div className='product-field-catalog'>
@@ -18,7 +18,7 @@ const ProductFieldCatalog = () => {
                         category={product.category}
                         brand={product.brand}
                         price={product.price}
-                        discount={product.discountPercentage}
+                        discountPercentage={product.discountPercentage}
                         rating={product.rating}
                         stock={product.stock}
                         thumbnail={product.thumbnail}

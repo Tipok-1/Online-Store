@@ -2,7 +2,7 @@ import React from "react";
 import '../CardTotal/CardTotal.css'
 
 
-const CardTotal = () => {
+const CardTotal = (): JSX.Element => {
     return (
         <div className="card-total">
             Cart total: €0.00

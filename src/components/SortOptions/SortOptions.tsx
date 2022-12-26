@@ -1,7 +1,7 @@
 import React from "react";
 import '../SortOptions/SortOptions.css'
 
-const SortOptions = () => {
+const SortOptions = (): JSX.Element => {
     return (
         <select className='sort-options'>
             <option disabled>Sort Options:</option>

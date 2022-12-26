@@ -1,12 +1,12 @@
 import React from "react";
 import '../Logo/Logo.css'
-import logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
+import logo from '../../assets/logo.png';
 
 
 
 
-const Logo = () => {
+const Logo = (): JSX.Element => {
     const router = useNavigate()
 
     return (

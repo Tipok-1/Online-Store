@@ -1,7 +1,7 @@
 import React from "react";
 import '../OneCategory/OneCategory.css'
 
-const OneCategory = ({category}) => {
+const OneCategory = ({category}): JSX.Element => {
     return (
         <label className="categories">
             <input type="checkbox" id="{children}"/>

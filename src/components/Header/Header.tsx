@@ -4,7 +4,7 @@ import CardTotal from "../CardTotal/CardTotal";
 import '../Header/Header.css'
 import Logo from "../Logo/Logo";
 
-const Header = () => {
+const Header = (): JSX.Element => {
     return (
         <div className='header'>
             <Logo />
