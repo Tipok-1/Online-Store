@@ -4,7 +4,8 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 
-const MainPage = (): JSX.Element => {
+const MainPage = (props): JSX.Element => {
+
     return (
         <div className="main-page">
             <Header/>
