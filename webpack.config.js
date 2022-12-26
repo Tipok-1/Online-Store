@@ -30,7 +30,7 @@ module.exports = ({ mode }) => {
             new CleanWebpackPlugin(),
         ],
         output: {
-            filename: filename('js'),
+            filename: filename('.js'),
             path: path.resolve(__dirname, './dist'),
         },
         module: {

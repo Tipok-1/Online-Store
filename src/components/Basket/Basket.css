@@ -1,0 +1,15 @@
+.basket {
+    display: flex;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.basket__img {
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}

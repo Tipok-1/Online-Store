@@ -1,0 +1,10 @@
+.product-field-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    background: #2C7873;
+    border: 2px solid #021C1E;
+    border-radius: 10px;
+}

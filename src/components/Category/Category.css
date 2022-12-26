@@ -1,0 +1,29 @@
+.category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    background: #004445;
+    border: 1px solid #021C1E;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.categories__field {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background: #004445;
+    margin-top: 10px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.categories__title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}

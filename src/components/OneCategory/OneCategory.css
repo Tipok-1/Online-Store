@@ -1,0 +1,10 @@
+
+.categories {
+    width: 200px;
+    
+}
+
+.categories__name {
+    color: white;
+    margin-left: 3px;
+}

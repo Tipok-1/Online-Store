@@ -1,0 +1,10 @@
+.product-field-catalog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    width: 100%;
+    background: #2C7873;
+}
+

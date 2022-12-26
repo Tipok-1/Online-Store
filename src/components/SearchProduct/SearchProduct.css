@@ -1,0 +1,7 @@
+.search-product {
+    display: flex;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
