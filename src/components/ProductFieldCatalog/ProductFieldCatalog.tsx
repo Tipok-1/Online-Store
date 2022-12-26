@@ -2,7 +2,7 @@ import React from "react";
 import Found from "../Found/Found";
 import Product from "../Product/Product";
 import '../ProductFieldCatalog/ProductFieldCatalog.css'
-import { data } from "../products";
+import  {data}  from "../products";
 import SearchProduct from "../SearchProduct/SearchProduct";
 import SortOptions from "../SortOptions/SortOptions";
 
@@ -14,6 +14,7 @@ const ProductFieldCatalog = (): JSX.Element => {
             {data.products.map(product => {
                 return (
                     <Product 
+                        key = {product.id}
                         title={product.title} 
                         category={product.category}
                         brand={product.brand}

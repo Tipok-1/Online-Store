@@ -1,5 +1,6 @@
 export const data = {
-    products: [
+    products: 
+    [
         {
             id: 1,
             title: "iPhone 9",

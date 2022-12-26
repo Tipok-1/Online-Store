@@ -1,6 +1,6 @@
 import React from "react";
 import '../Footer/Footer.css'
-// import logo from '../../assets/logo.png';
+//import logo from '../../assets/logo.png';
 
 
 
