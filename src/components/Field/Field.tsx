@@ -3,7 +3,7 @@ import '../Field/Field.css'
 import ProductField from "../ProductField/ProductField";
 import Toolbar from "../Toolbar/Toolbar";
 
-const Field = (): JSX.Element => {
+const Field = (props): JSX.Element => {
     return (
         <div className='field'>
             <Toolbar/>

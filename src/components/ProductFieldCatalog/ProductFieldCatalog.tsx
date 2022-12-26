@@ -1,13 +1,10 @@
 import React from "react";
-import Found from "../Found/Found";
 import Product from "../Product/Product";
 import '../ProductFieldCatalog/ProductFieldCatalog.css'
 import { data } from "../products";
-import SearchProduct from "../SearchProduct/SearchProduct";
-import SortOptions from "../SortOptions/SortOptions";
 
 
-const ProductFieldCatalog = (): JSX.Element => {
+const ProductFieldCatalog = (props): JSX.Element => {
 
     return (
         <div className='product-field-catalog'>

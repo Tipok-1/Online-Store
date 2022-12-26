@@ -3,7 +3,7 @@ import '../ProductField/ProductField.css'
 import ProductFieldCatalog from "../ProductFieldCatalog/ProductFieldCatalog";
 import ProductFieldHeader from "../ProductFieldHeader/ProductFieldHeader";
 
-const ProductField = (): JSX.Element => {
+const ProductField = (props): JSX.Element => {
     return (
         <div className='product-field'>
             <ProductFieldHeader/>
