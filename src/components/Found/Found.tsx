@@ -1,9 +1,9 @@
 import React from "react";
 import '../Found/Found.css'
 
-const Found = (): JSX.Element => {
+const Found = (props:{found:number}): JSX.Element => {
     return (
-        <div className='found'> Found: 0
+        <div className='found'> Found: {props.found}
         </div>
     )
 }

@@ -1,10 +1,18 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import '../SearchProduct/SearchProduct.css'
 
-const SearchProduct = (): JSX.Element => {
+interface ISearchProduct{
+    value:string,
+    onChange:(e:React.ChangeEvent<HTMLInputElement>) => void
+}
+const SearchProduct = (props:ISearchProduct): JSX.Element => {
     return (
-        <input type="search" placeholder="Search product" className='search-product'>
-        </input>
+        <input 
+            {...props}
+            type="search" 
+            placeholder="Search product" 
+            className='search-product'
+        />
     )
 }
 
