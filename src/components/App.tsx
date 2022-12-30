@@ -5,36 +5,25 @@ import { Routes, Route,useRoutes } from 'react-router-dom';
 import StartPage from './pages/ProductPage';
 import ProductPage from './pages/ProductPage';
 import BasketPage from './pages/BasketPage';
-import { QueryClient, QueryClientProvider} from 'react-query';
 
-const queryClient = new QueryClient(/*{
-    defaultOptions:{
-        queries:{
-            refetchOnWindowFocus:false
-        }
-    }
-}*/)
+export const store: { products: number[], setProducts: (id: number) => void } = {
+    products: [],
+    setProducts: (id) => { store.products.push(id) },
+};
+// const value = useContext<any>(themes);
+export const Store = React.createContext(store);
+
 export default function App() {
     
     return (
-        /*<Routes>
-            <Route path="/">
-                <MainPage />
-            </Route>
-
-            <Route path="product/:id" element={<ProductPage />} />
-            <Route path="basket" element={<BasketPage />} />
-            <Route path="*" element={<StartPage />} />
-        </Routes>*/  
-        <QueryClientProvider client = {queryClient}>         
+        <Store.Provider value={store}>
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="product/:id" element={<ProductPage />} />
-                <Route path="basket" element={<BasketPage />} />
+                <Route path="basket" element={<BasketPage />} />            
+                <Route path="*" element={<StartPage />} />
             </Routes>
-        </QueryClientProvider> 
-        
-
+        </Store.Provider>
     );
 }
 

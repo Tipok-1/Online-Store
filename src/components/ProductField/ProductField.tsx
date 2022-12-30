@@ -2,7 +2,7 @@ import React from "react";
 import '../ProductField/ProductField.css'
 import ProductFieldCatalog from "../ProductFieldCatalog/ProductFieldCatalog";
 import ProductFieldHeader from "../ProductFieldHeader/ProductFieldHeader";
-import  {data,ProductService}  from "../products";
+import  {data}  from "../products";
 import {useQuery} from "react-query"
 import { IProduct } from "../types";
 

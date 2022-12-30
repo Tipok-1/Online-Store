@@ -19,15 +19,22 @@ body{
 /*Main-page*/
 .main-page{
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
     flex: 1 1 auto;
     position: relative;
     width:100%;
+}
+.field{
+    display: flex;
+    flex: 1 1 auto;
 }
 .btn-primary {
     padding: 5px;
     background: white;
     border-color: #004445;
     border-radius: 10px;
+    cursor:pointer;
 }
 /**/
 /*Product-page*/

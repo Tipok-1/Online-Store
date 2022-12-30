@@ -1,30 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import '../Product/Product.css'
 import { useNavigate, Link } from "react-router-dom";
 import { IProduct } from "../types";
-import {data} from "../products"
-import LazyImage from "../LazyImage/LazyImage";
-import axios from "axios";
+import { Store } from "../App";
 
 const Product = ({ title, category, brand, price, discountPercentage, rating, stock, thumbnail, id }: IProduct): JSX.Element => {
     const router = useNavigate()
-
-//<img className="product-img" src={thumbnail}></img>
-    /*let url = React.useState(thumbnail);
-    const image = React.useMemo(() => {
-        console.log("отработала");
-        console.log(data);
-        return <LazyImage  className="product-img" src={thumbnail} alt = {"Картинка не загрузилась"}/>
-    } ,[data])*/
-    /*const image = React.useMemo(()=>{
-        return <LazyImage  className="product-img" src={thumbnail} alt = {"Картинка не загрузилась"}/>
-    },[thumbnail])*/
-    //<LazyImage  className="product-img" src={thumbnail} alt = {"Картинка не загрузилась"}/>
+    const store = useContext(Store);
     return (
-        <div className='product'>
+        <div className='product' style={{backgroundImage: `url(${thumbnail})`}}>
             <p className="product-header">{title}</p>
             <div className="product-description">
-                <LazyImage  className="product-img" src={thumbnail} alt = {"Картинка не загрузилась"}/>
                 <p>Category: {category}</p>
                 <p>Brand: {brand}</p>
                 <p>Price: {price}</p>
@@ -33,15 +19,19 @@ const Product = ({ title, category, brand, price, discountPercentage, rating, st
                 <p>Stock: {stock}</p>
             </div>
             <div className="product-btns">
-
-                <button className="btn btn-primary"
-                    // onClick={() => router(`/basket`)}
-                >ADD TO CARD</button>
+                <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                        store.setProducts(id as number);
+                    }}
+                >
+                    ADD TO CARD
+                </button>
                 <button className="btn btn-primary"
                     onClick={() => router(`/product/${id}`)}
                 >DETAILS</button>
             </div>
-        </div>
+        </div >
     )
 }
 

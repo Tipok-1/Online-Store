@@ -8,8 +8,8 @@
     background: #6FB98F ;
     margin-top: 10px;
     margin-bottom: 10px;
-    cursor: pointer;
     border-radius: 10px;
+    background-size: cover;
 }
 
 .product-header {

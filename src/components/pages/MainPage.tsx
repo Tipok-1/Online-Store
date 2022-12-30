@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 
 
 const MainPage = (): JSX.Element => {
+
     return (
         <div className="main-page">
             <Header/>
