@@ -1,3 +1,20 @@
+import axios from "axios"
+import { IProduct } from "./types";
+interface IResponse{
+    products:IProduct[],
+    total: number,
+    skip: number,
+    limit: number
+}
+
+export const ProductService = {
+    async getAll(){
+        return axios.get("https://dummyjson.com/products?limit=100");
+
+    }
+}
+
+/*Тестовый вариант*/
 export const data = {
     products: 
     [

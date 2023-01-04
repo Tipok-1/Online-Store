@@ -7,12 +7,10 @@ import { Store } from "../App";
 const Product = ({ title, category, brand, price, discountPercentage, rating, stock, thumbnail, id }: IProduct): JSX.Element => {
     const router = useNavigate()
     const store = useContext(Store);
-
     return (
-        <div className='product' style={{backgroundImage: `url(${thumbnail})` }}>
+        <div className='product' style={{backgroundImage: `url(${thumbnail})`}}>
             <p className="product-header">{title}</p>
-            <div className="product-description" style={{background: `white`, marginBottom: 20, marginLeft: 3, borderRadius: 9}}>
-                {/* <img className="product-img" src={thumbnail}></img> */}
+            <div className="product-description">
                 <p>Category: {category}</p>
                 <p>Brand: {brand}</p>
                 <p>Price: {price}</p>
@@ -24,7 +22,7 @@ const Product = ({ title, category, brand, price, discountPercentage, rating, st
                 <button
                     className="btn btn-primary"
                     onClick={() => {
-                        store.setProducts(id);
+                        store.setProducts(id as number);
                     }}
                 >
                     ADD TO CARD
@@ -37,4 +35,4 @@ const Product = ({ title, category, brand, price, discountPercentage, rating, st
     )
 }
 
-export default Product;
+export default React.memo(Product);

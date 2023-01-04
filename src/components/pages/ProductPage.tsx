@@ -25,7 +25,7 @@ const ProductPage = (): JSX.Element => {
     return (
         <div className="product-page">
             <Header />
-            <div style={{background: '#6FB98F'}}>
+            <div className="product-page-main">
 
             {currentProduct
                 && <Product 
