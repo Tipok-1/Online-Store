@@ -10,7 +10,7 @@ import { countAllPrice } from '../helpers';
 
 const BasketPage = (): JSX.Element => {
     const [store, setStore] = useContext(Store)!;
-
+    const [isDisablePlusBtn, setIsDisablePlusBtn] = useState<boolean>(false);
     const getUniqProducts = (): IProduct[] => {
         const uniqProducts: IProduct[] = [];
         store.products.forEach((product: IProduct) => {
@@ -27,8 +27,12 @@ const BasketPage = (): JSX.Element => {
                 ...store,
                 products: [...store.products, product],
             });
+        } 
+        if (countNumbersProduct(product) + 1 === product.stock) {
+            setIsDisablePlusBtn(true);
         }
     };
+
     const removeProduct = (product: IProduct): void => {
         const indexProduct = store.products.lastIndexOf(product);
         const newProducts = [...store.products];
@@ -37,6 +41,7 @@ const BasketPage = (): JSX.Element => {
             ...store,
             products: newProducts,
         });
+        setIsDisablePlusBtn(false);
     };
 
     const countNumbersProduct = (product: IProduct): number => {
@@ -82,6 +87,12 @@ const BasketPage = (): JSX.Element => {
                                         </div>
                                         <div
                                             className="count-product__circle"
+                                            style={{
+                                                backgroundColor:
+                                                    isDisablePlusBtn
+                                                        ? '#b7b7b7'
+                                                        : '',
+                                            }}
                                             onClick={() => addProduct(product)}
                                         >
                                             +
