@@ -22,10 +22,12 @@ const BasketPage = (): JSX.Element => {
     };
 
     const addProduct = (product: IProduct): void => {
-        setStore({
-            ...store,
-            products: [...store.products, product],
-        });
+        if (countNumbersProduct(product) < product.stock) {
+            setStore({
+                ...store,
+                products: [...store.products, product],
+            });
+        }
     };
     const removeProduct = (product: IProduct): void => {
         const indexProduct = store.products.lastIndexOf(product);
