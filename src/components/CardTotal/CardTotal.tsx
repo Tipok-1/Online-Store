@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../App";
 import '../CardTotal/CardTotal.css'
+import { countAllPrice } from "../helpers";
+import { IStore } from "../types";
 
 
 const CardTotal = (): JSX.Element => {
+    const [store, setStore] = useContext<IStore>(Store);
+
     return (
         <div className="card-total">
-            Cart total: €0.00
+            Cart total: € {countAllPrice(store.products)}
         </div>
     )
 }

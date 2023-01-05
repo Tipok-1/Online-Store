@@ -14,18 +14,7 @@ const ProductFieldCatalog = (props:{products:IProduct[]}): JSX.Element => {
         <div className='product-field-catalog'>
             {props.products.map(product => {
                 return (
-                    <Product 
-                        key = {product.id}
-                        title={product.title} 
-                        category={product.category}
-                        brand={product.brand}
-                        price={product.price}
-                        discountPercentage={product.discountPercentage}
-                        rating={product.rating}
-                        stock={product.stock}
-                        thumbnail={product.thumbnail}
-                        id={product.id}
-                    />
+                    <Product key={product.id} product={product}/>
                 )
             })}
         </div>

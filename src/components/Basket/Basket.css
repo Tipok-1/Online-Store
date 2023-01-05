@@ -5,6 +5,10 @@
     cursor: pointer;
 }
 
+.basket__count {
+    margin-right: 10px;
+}
+
 .basket__img {
     background-color: white;
     border-radius: 10px;

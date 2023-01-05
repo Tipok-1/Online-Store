@@ -1,30 +1,28 @@
-import React from 'react';
+import React, { createContext, useEffect, useState, useContext } from 'react';
 import MainPage from './pages/MainPage';
 import './styles/App.css';
-import { Routes, Route,useRoutes } from 'react-router-dom';
+import { Routes, Route, useRoutes } from 'react-router-dom';
 import StartPage from './pages/ProductPage';
 import ProductPage from './pages/ProductPage';
+import { IStore } from './types';
 import BasketPage from './pages/BasketPage';
 
-export const store: { products: number[], setProducts: (id: number) => void } = {
-    products: [],
-    setProducts: (id) => { store.products.push(id) },
-};
-// const value = useContext<any>(themes);
-export const Store = React.createContext(store);
+const DEFAULT_STATE: IStore = {
+    products: []
+}
+
+export const Store = createContext<IStore>(DEFAULT_STATE);
 
 export default function App() {
-    
+    const store = useState<IStore>(DEFAULT_STATE);
     return (
         <Store.Provider value={store}>
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="product/:id" element={<ProductPage />} />
-                <Route path="basket" element={<BasketPage />} />            
+                <Route path="basket" element={<BasketPage/>} />
                 <Route path="*" element={<StartPage />} />
             </Routes>
         </Store.Provider>
     );
 }
-
-
