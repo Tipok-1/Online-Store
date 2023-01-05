@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../Product/Product.css';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { IProduct } from '../types';
 import { Store } from '../App';
 
@@ -22,7 +22,8 @@ const Product = ({ product }: IPropsProduct): JSX.Element => {
     } = product;
 
     const router = useNavigate();
-    const [store, setStore] = useContext(Store);
+    const [store, setStore] = useContext(Store)!;
+    const location = useLocation();
 
     const isBusketProduct = (): boolean => store.products.includes(product);
 
@@ -34,7 +35,9 @@ const Product = ({ product }: IPropsProduct): JSX.Element => {
     };
 
     const removeProduct = () => {
-        const newBasketProducts = store.products.filter((p: IProduct) => p !== product)
+        const newBasketProducts = store.products.filter(
+            (p: IProduct) => p !== product
+        );
         setStore({
             ...store,
             products: newBasketProducts,
@@ -44,7 +47,13 @@ const Product = ({ product }: IPropsProduct): JSX.Element => {
     return (
         <div
             className="product"
-            style={{ backgroundImage: `url(${thumbnail})` }}
+            style={{
+                backgroundImage: `url(${thumbnail})`,
+                width:
+                    isBusketProduct() && location.pathname === '/basket'
+                        ? '100%'
+                        : '',
+            }}
         >
             <p className="product-header">{title}</p>
             <div className="product-description">

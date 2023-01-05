@@ -1,20 +1,26 @@
-import React, { createContext, useEffect, useState, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 import MainPage from './pages/MainPage';
-import './styles/App.css';
-import { Routes, Route, useRoutes } from 'react-router-dom';
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import StartPage from './pages/ProductPage';
 import ProductPage from './pages/ProductPage';
 import { IStore } from './types';
 import BasketPage from './pages/BasketPage';
 
-const DEFAULT_STATE: IStore = {
-    products: []
+const DEFAULT_STORE: IStore = {
+    products: [],
 }
 
-export const Store = createContext<IStore>(DEFAULT_STATE);
+function useStoreData() {
+    const store = useState<IStore>(DEFAULT_STORE);
+    return store;
+}
+type UseStoreDataReturnType = ReturnType<typeof useStoreData>
+
+export const Store = createContext<UseStoreDataReturnType | null>(null);
 
 export default function App() {
-    const store = useState<IStore>(DEFAULT_STATE);
+    const store = useState<IStore>(DEFAULT_STORE);
     return (
         <Store.Provider value={store}>
             <Routes>

@@ -4,12 +4,12 @@
     box-sizing: border-box;
 }
 html,
-body{
+body {
     height: 100%;
     width: 100%;
 }
 
-#root{
+#root {
     min-height: 100%;
     display: flex;
     position: relative;
@@ -17,15 +17,15 @@ body{
     overflow-x: hidden;
 }
 /*Main-page*/
-.main-page{
+.main-page {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
     position: relative;
-    width:100%;
+    width: 100%;
 }
-.field{
+.field {
     display: flex;
     flex: 1 1 auto;
 }
@@ -34,23 +34,23 @@ body{
     background: white;
     border-color: #004445;
     border-radius: 10px;
-    cursor:pointer;
+    cursor: pointer;
 }
 /**/
 /*Product-page*/
-.product-page{
+.product-page {
     height: 100%;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    width:100%;
+    width: 100%;
 }
-.product-page-main{
-    background-color: #6FB98F;
+.product-page-main {
+    background-color: #6fb98f;
     display: flex;
     flex: 1 1 auto;
     align-items: center;
-    height:100%;
+    height: 100%;
     width: 100%;
 }
 /**/
@@ -70,7 +70,7 @@ body{
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background: #6FB98F;
+    background: #6fb98f;
     width: 100%;
     padding: 10px 0;
     font-size: 25px;
@@ -80,6 +80,7 @@ body{
     width: 60%;
     border: 1px solid white;
     border-radius: 9px;
+    min-width: 300px;
 }
 
 .basket-page__title {
@@ -105,5 +106,35 @@ body{
     border-radius: 9px;
     width: 30%;
 }
-/**/
 
+.basket-page__catalog {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.count-product {
+    display: flex;
+    width: 30%;
+    margin: 5px;
+    align-items: center;
+}
+
+.count-product__number {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.count-product__circle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background-color: white;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+/**/

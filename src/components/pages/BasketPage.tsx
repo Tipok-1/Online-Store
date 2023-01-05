@@ -9,7 +9,37 @@ import { IProduct, IStore } from '../types';
 import { countAllPrice } from '../helpers';
 
 const BasketPage = (): JSX.Element => {
-    const [store, setStore] = useContext<IStore>(Store);
+    const [store, setStore] = useContext(Store)!;
+
+    const getUniqProducts = (): IProduct[] => {
+        const uniqProducts: IProduct[] = [];
+        store.products.forEach((product: IProduct) => {
+            if (!uniqProducts.includes(product)) {
+                uniqProducts.push(product);
+            }
+        });
+        return uniqProducts;
+    };
+
+    const addProduct = (product: IProduct): void => {
+        setStore({
+            ...store,
+            products: [...store.products, product],
+        });
+    };
+    const removeProduct = (product: IProduct): void => {
+        const indexProduct = store.products.lastIndexOf(product);
+        const newProducts = [...store.products];
+        newProducts.splice(indexProduct, 1);
+        setStore({
+            ...store,
+            products: newProducts,
+        });
+    };
+
+    const countNumbersProduct = (product: IProduct): number => {
+        return store.products.filter((p: IProduct) => p === product).length;
+    };
 
     return (
         <div className="basket-page">
@@ -30,8 +60,32 @@ const BasketPage = (): JSX.Element => {
                             Product in Cart
                         </div>
                         <div className="basket-page__description__catalog">
-                            {store.products.map((product: IProduct) => (
-                                <Product key={product.id} product={product} />
+                            {getUniqProducts().map((product: IProduct) => (
+                                <div className="basket-page__catalog">
+                                    <Product
+                                        key={product.id}
+                                        product={product}
+                                    />
+                                    <div className="count-product">
+                                        <div
+                                            className="count-product__circle"
+                                            onClick={() =>
+                                                removeProduct(product)
+                                            }
+                                        >
+                                            -
+                                        </div>
+                                        <div className="count-product__number">
+                                            {countNumbersProduct(product)}
+                                        </div>
+                                        <div
+                                            className="count-product__circle"
+                                            onClick={() => addProduct(product)}
+                                        >
+                                            +
+                                        </div>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </div>

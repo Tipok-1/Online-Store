@@ -6,7 +6,7 @@ import { IStore } from "../types";
 
 
 const CardTotal = (): JSX.Element => {
-    const [store, setStore] = useContext<IStore>(Store);
+    const [store] = useContext(Store)!;
 
     return (
         <div className="card-total">

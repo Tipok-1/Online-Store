@@ -1,6 +1,6 @@
 import React from "react";
 import '../Toolbar/Toolbar.css'
-import '../styles/App.css'
+import '../App.css'
 import { Button } from "react-bootstrap";
 import Category from "../Category/Category";
 
