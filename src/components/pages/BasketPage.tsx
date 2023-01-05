@@ -10,7 +10,14 @@ import { countAllPrice } from '../helpers';
 
 const BasketPage = (): JSX.Element => {
     const [store, setStore] = useContext(Store)!;
-    const [isDisablePlusBtn, setIsDisablePlusBtn] = useState<boolean>(false);
+
+    const countNumbersProduct = (product: IProduct): number => {
+        return store.products.filter((p: IProduct) => p === product).length;
+    };
+    const getDefaultDisableBtns = () => store.products.filter((p: IProduct) => countNumbersProduct(p) >= p.stock);
+   
+    const [disablePlusBtns, setDisablePlusBtns] = useState<IProduct[]>(getDefaultDisableBtns());
+
     const getUniqProducts = (): IProduct[] => {
         const uniqProducts: IProduct[] = [];
         store.products.forEach((product: IProduct) => {
@@ -29,7 +36,7 @@ const BasketPage = (): JSX.Element => {
             });
         } 
         if (countNumbersProduct(product) + 1 === product.stock) {
-            setIsDisablePlusBtn(true);
+            setDisablePlusBtns([...disablePlusBtns, product]);
         }
     };
 
@@ -41,12 +48,12 @@ const BasketPage = (): JSX.Element => {
             ...store,
             products: newProducts,
         });
-        setIsDisablePlusBtn(false);
+        if (disablePlusBtns.includes(product)) {
+            setDisablePlusBtns(disablePlusBtns.filter((p) => p !== product));
+        }
     };
 
-    const countNumbersProduct = (product: IProduct): number => {
-        return store.products.filter((p: IProduct) => p === product).length;
-    };
+
 
     return (
         <div className="basket-page">
@@ -89,7 +96,7 @@ const BasketPage = (): JSX.Element => {
                                             className="count-product__circle"
                                             style={{
                                                 backgroundColor:
-                                                    isDisablePlusBtn
+                                                    disablePlusBtns.includes(product)
                                                         ? '#b7b7b7'
                                                         : '',
                                             }}
