@@ -6,6 +6,7 @@ import StartPage from './pages/ProductPage';
 import ProductPage from './pages/ProductPage';
 import { IStore } from './types';
 import BasketPage from './pages/BasketPage';
+// import 'rc-pagination/dist/rc-pagination.css';
 
 const DEFAULT_STORE: IStore = {
     products: [],
