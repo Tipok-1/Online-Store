@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
@@ -14,6 +14,16 @@ import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 const BasketPage = (): JSX.Element => {
     const [store, setStore] = useContext(Store)!;
 
+    const numbersProductsInPage = [1, 3, 5, 10, 25];
+    const [currentNumbersProducts, setCurrentNumbersProducts] = useState<number>(1);
+    const [page, setPage] = useState<number>(1);
+
+    useEffect(() => {
+        if (page !== 1 && (uniqProducts.length % currentNumbersProducts) === 0 && (uniqProducts.length / currentNumbersProducts) < page) {
+            setPage(page - 1)
+        }
+    }, [store]);
+
     const countNumbersProduct = (product: IProduct): number => {
         return store.products.filter((p: IProduct) => p === product).length;
     };
@@ -21,10 +31,7 @@ const BasketPage = (): JSX.Element => {
         store.products.filter(
             (p: IProduct) => countNumbersProduct(p) >= p.stock
         );
-
-    const [disablePlusBtns, setDisablePlusBtns] = useState<IProduct[]>(
-        getDefaultDisableBtns()
-    );
+    const [disablePlusBtns, setDisablePlusBtns] = useState<IProduct[]>(getDefaultDisableBtns());
 
     const getUniqProducts = (): IProduct[] => {
         const uniqProducts: IProduct[] = [];
@@ -35,6 +42,7 @@ const BasketPage = (): JSX.Element => {
         });
         return uniqProducts;
     };
+    const uniqProducts = getUniqProducts();
 
     const addProduct = (product: IProduct): void => {
         if (countNumbersProduct(product) < product.stock) {
@@ -61,16 +69,19 @@ const BasketPage = (): JSX.Element => {
         }
     };
 
-    const numbersProductsInPage = [1, 3, 5, 10, 25];
-    const [currentNumbersProducts, setCurrentNumbersProducts] =
-        useState<number>(1);
-    const [page, setPage] = useState<number>(1);
-    
     const nextPage = () => {
-        if (Math.ceil(getUniqProducts().length / currentNumbersProducts) > page) {
-          setPage(page + 1)
+        if (Math.ceil(uniqProducts.length / currentNumbersProducts) > page) {
+            setPage(page + 1)
         }
     };
+
+    const backPage = () => {
+        if (page > 1) {
+            setPage(page - 1)
+        }
+    };
+
+
 
     return (
         <div className="basket-page">
@@ -104,10 +115,13 @@ const BasketPage = (): JSX.Element => {
                                                             currentNumbersProducts ===
                                                             option
                                                         }
-                                                        onClick={() =>
+                                                        onClick={() => {
                                                             setCurrentNumbersProducts(
                                                                 option
-                                                            )
+                                                            );
+                                                            setPage(1);
+                                                        }
+
                                                         }
                                                     >
                                                         {option}
@@ -123,7 +137,7 @@ const BasketPage = (): JSX.Element => {
                                 <div
                                     className="count-product__circle"
                                     style={{ marginLeft: 10 }}
-                                    onClick={() => setPage(page - 1)}
+                                    onClick={() => backPage()}
                                 >
                                     -
                                 </div>
@@ -142,48 +156,59 @@ const BasketPage = (): JSX.Element => {
                             </div>
                         </div>
                         <div className="basket-page__description__catalog">
-                            {getUniqProducts()
-                                .map((product: IProduct) => (
-                                    <div className="basket-page__catalog">
-                                        <Product
-                                            key={product.id}
-                                            product={product}
-                                        />
-                                        <div className="count-product">
-                                            <div
-                                                className="count-product__circle"
-                                                onClick={() =>
-                                                    removeProduct(product)
-                                                }
-                                            >
-                                                -
+                            {store.products.length
+                                ?
+                                uniqProducts
+                                    .map((product: IProduct, index: number) => (
+                                        <div className="basket-page__catalog">
+                                            <div className="basket-page__number-product">
+                                                <div className="count-product__circle">
+                                                    {index + 1}.
+                                                </div>
                                             </div>
-                                            <div className="count-product__number">
-                                                {countNumbersProduct(product)}
-                                            </div>
-                                            <div
-                                                className="count-product__circle"
-                                                style={{
-                                                    backgroundColor:
-                                                        disablePlusBtns.includes(
-                                                            product
-                                                        )
-                                                            ? '#b7b7b7'
-                                                            : '',
-                                                }}
-                                                onClick={() =>
-                                                    addProduct(product)
-                                                }
-                                            >
-                                                +
+                                            <Product
+                                                key={product.id}
+                                                product={product}
+                                            />
+                                            <div className="count-product">
+                                                <div
+                                                    className="count-product__circle"
+                                                    onClick={() =>
+                                                        removeProduct(product)
+                                                    }
+                                                >
+                                                    -
+                                                </div>
+                                                <div className="count-product__number">
+                                                    {countNumbersProduct(product)}
+                                                </div>
+                                                <div
+                                                    className="count-product__circle"
+                                                    style={{
+                                                        backgroundColor:
+                                                            disablePlusBtns.includes(
+                                                                product
+                                                            )
+                                                                ? '#b7b7b7'
+                                                                : '',
+                                                    }}
+                                                    onClick={() =>
+                                                        addProduct(product)
+                                                    }
+                                                >
+                                                    +
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))
-                                .slice(
-                                    page * currentNumbersProducts - currentNumbersProducts,
-                                    page * currentNumbersProducts
-                                )}
+                                    ))
+                                    .slice(
+                                        page * currentNumbersProducts - currentNumbersProducts,
+                                        page * currentNumbersProducts
+                                    )
+
+
+                                : <p>Basket is empty</p>}
+
                         </div>
                     </div>
                     <div className="basket-page__summary">

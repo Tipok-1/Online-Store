@@ -3,6 +3,7 @@
     color: white;
     font-size: 35px;
     cursor: pointer;
+    align-items: center;
 }
 
 .basket__count {
