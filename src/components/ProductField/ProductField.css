@@ -1,0 +1,18 @@
+.product-field {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    width: 65%;
+    background: #2C7873;
+    border: 2px solid #021C1E;
+    border-radius: 10px;
+}
+@media only screen and (max-width: 580px){
+    .product-field{
+        width:100%;
+        margin-top: 10px;
+    }
+}

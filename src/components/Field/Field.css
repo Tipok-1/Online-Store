@@ -1,0 +1,15 @@
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding:  30px;
+    width: 100%;
+    background: #2C7873;
+}
+@media only screen and (max-width: 580px){
+    .field {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
