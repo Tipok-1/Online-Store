@@ -8,12 +8,9 @@ import Header from "../Header/Header";
 const MainPage = (): JSX.Element => {
     // const storeCurrentInBasket = useContext(Store);
     // console.log(storeCurrentInBasket);
-    
     return (
         <div className="main-page">
-            <Header/>
             <Field/>
-            <Footer/>
         </div>
     )
 }
