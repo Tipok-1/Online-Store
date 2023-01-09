@@ -10,7 +10,7 @@ const Logo = (): JSX.Element => {
     const router = useNavigate()
 
     return (
-        <div className="logo" onClick={() => router(`/dist/index.html`)}>
+        <div className="logo" onClick={() => router(`/`)}>
             <img className="logo__img" src={logo}></img>
             Online Store
         </div>
