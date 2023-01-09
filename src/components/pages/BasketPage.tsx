@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
+import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import { Store } from '../App';
@@ -7,15 +7,30 @@ import { data } from '../products';
 import Product from '../Product/Product';
 import { IProduct, IStore } from '../types';
 import { countAllPrice } from '../helpers';
+import Pagination from 'react-bootstrap/Pagination';
+import DropdownItem from 'react-bootstrap/esm/DropdownItem';
+import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 
 const BasketPage = (): JSX.Element => {
     const [store, setStore] = useContext(Store)!;
 
+    const numbersProductsInPage = [1, 3, 5, 10, 25];
+    const [currentNumbersProducts, setCurrentNumbersProducts] = useState<number>(1);
+    const [page, setPage] = useState<number>(1);
+
+    useEffect(() => {
+        if (page !== 1 && (uniqProducts.length % currentNumbersProducts) === 0 && (uniqProducts.length / currentNumbersProducts) < page) {
+            setPage(page - 1)
+        }
+    }, [store]);
+
     const countNumbersProduct = (product: IProduct): number => {
         return store.products.filter((p: IProduct) => p === product).length;
     };
-    const getDefaultDisableBtns = () => store.products.filter((p: IProduct) => countNumbersProduct(p) >= p.stock);
-   
+    const getDefaultDisableBtns = () =>
+        store.products.filter(
+            (p: IProduct) => countNumbersProduct(p) >= p.stock
+        );
     const [disablePlusBtns, setDisablePlusBtns] = useState<IProduct[]>(getDefaultDisableBtns());
 
     const getUniqProducts = (): IProduct[] => {
@@ -27,6 +42,7 @@ const BasketPage = (): JSX.Element => {
         });
         return uniqProducts;
     };
+    const uniqProducts = getUniqProducts();
 
     const addProduct = (product: IProduct): void => {
         if (countNumbersProduct(product) < product.stock) {
@@ -34,7 +50,7 @@ const BasketPage = (): JSX.Element => {
                 ...store,
                 products: [...store.products, product],
             });
-        } 
+        }
         if (countNumbersProduct(product) + 1 === product.stock) {
             setDisablePlusBtns([...disablePlusBtns, product]);
         }
@@ -50,6 +66,18 @@ const BasketPage = (): JSX.Element => {
         });
         if (disablePlusBtns.includes(product)) {
             setDisablePlusBtns(disablePlusBtns.filter((p) => p !== product));
+        }
+    };
+
+    const nextPage = () => {
+        if (Math.ceil(uniqProducts.length / currentNumbersProducts) > page) {
+            setPage(page + 1)
+        }
+    };
+
+    const backPage = () => {
+        if (page > 1) {
+            setPage(page - 1)
         }
     };
 
@@ -72,41 +100,115 @@ const BasketPage = (): JSX.Element => {
                     <div className="basket-page__description">
                         <div className="basket-page__title">
                             Product in Cart
+                            <p className="border">
+                                ITEMS:
+                                <Dropdown style={{ marginLeft: 5 }}>
+                                    <Dropdown.Toggle>
+                                        {currentNumbersProducts}
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        {numbersProductsInPage.map(
+                                            (option: number) => {
+                                                return (
+                                                    <Dropdown.Item
+                                                        active={
+                                                            currentNumbersProducts ===
+                                                            option
+                                                        }
+                                                        onClick={() => {
+                                                            setCurrentNumbersProducts(
+                                                                option
+                                                            );
+                                                            setPage(1);
+                                                        }
+
+                                                        }
+                                                    >
+                                                        {option}
+                                                    </Dropdown.Item>
+                                                );
+                                            }
+                                        )}
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </p>
+                            <div className="basket-page__choose-pages border ">
+                                PAGES:
+                                <div
+                                    className="count-product__circle"
+                                    style={{ marginLeft: 10 }}
+                                    onClick={() => backPage()}
+                                >
+                                    -
+                                </div>
+                                <p
+                                    className="count-product__number"
+                                    style={{ margin: '0 5px' }}
+                                >
+                                    {page}
+                                </p>
+                                <div
+                                    className="count-product__circle"
+                                    onClick={() => nextPage()}
+                                >
+                                    +
+                                </div>
+                            </div>
                         </div>
                         <div className="basket-page__description__catalog">
-                            {getUniqProducts().map((product: IProduct) => (
-                                <div className="basket-page__catalog">
-                                    <Product
-                                        key={product.id}
-                                        product={product}
-                                    />
-                                    <div className="count-product">
-                                        <div
-                                            className="count-product__circle"
-                                            onClick={() =>
-                                                removeProduct(product)
-                                            }
-                                        >
-                                            -
+                            {store.products.length
+                                ?
+                                uniqProducts
+                                    .map((product: IProduct, index: number) => (
+                                        <div className="basket-page__catalog">
+                                            <div className="basket-page__number-product">
+                                                <div className="count-product__circle">
+                                                    {index + 1}.
+                                                </div>
+                                            </div>
+                                            <Product
+                                                key={product.id}
+                                                product={product}
+                                            />
+                                            <div className="count-product">
+                                                <div
+                                                    className="count-product__circle"
+                                                    onClick={() =>
+                                                        removeProduct(product)
+                                                    }
+                                                >
+                                                    -
+                                                </div>
+                                                <div className="count-product__number">
+                                                    {countNumbersProduct(product)}
+                                                </div>
+                                                <div
+                                                    className="count-product__circle"
+                                                    style={{
+                                                        backgroundColor:
+                                                            disablePlusBtns.includes(
+                                                                product
+                                                            )
+                                                                ? '#b7b7b7'
+                                                                : '',
+                                                    }}
+                                                    onClick={() =>
+                                                        addProduct(product)
+                                                    }
+                                                >
+                                                    +
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="count-product__number">
-                                            {countNumbersProduct(product)}
-                                        </div>
-                                        <div
-                                            className="count-product__circle"
-                                            style={{
-                                                backgroundColor:
-                                                    disablePlusBtns.includes(product)
-                                                        ? '#b7b7b7'
-                                                        : '',
-                                            }}
-                                            onClick={() => addProduct(product)}
-                                        >
-                                            +
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                                    ))
+                                    .slice(
+                                        page * currentNumbersProducts - currentNumbersProducts,
+                                        page * currentNumbersProducts
+                                    )
+
+
+                                : <p>Basket is empty</p>}
+
                         </div>
                     </div>
                     <div className="basket-page__summary">

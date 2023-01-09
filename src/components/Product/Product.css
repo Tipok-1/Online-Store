@@ -3,8 +3,8 @@
     align-items: center;
     flex-direction: column;
     padding: 10px;
-    width:31%;
-    background: #6FB98F ;
+    width: 31%;
+    background: #6FB98F;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -24,7 +24,8 @@
     background-color: white;
     border-radius: 10px;
 }
-.product-description{
+
+.product-description {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +33,7 @@
     padding: 10px;
     margin: 10px;
     border-radius: 8px;
+    font-size: 12px;
 }
 
 .product-btns {
@@ -48,14 +50,14 @@
 
 }
 
-Adaptive
-@media only screen and (max-width: 1100px){
-    .product{
-        width:45%;
+Adaptive @media only screen and (max-width: 1100px) {
+    .product {
+        width: 45%;
     }
 }
-@media only screen and (max-width: 870px){
-    .product{
-        width:90%;
+
+@media only screen and (max-width: 870px) {
+    .product {
+        width: 90%;
     }
 }

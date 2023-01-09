@@ -9,6 +9,8 @@ import BasketPage from './pages/BasketPage';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
+// import 'rc-pagination/dist/rc-pagination.css';>>>>>>> gh-pages
+
 const DEFAULT_STORE: IStore = {
     products: [],
 }
