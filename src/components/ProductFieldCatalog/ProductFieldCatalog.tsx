@@ -12,11 +12,15 @@ import axios from "axios";
 const ProductFieldCatalog = (props:{products:IProduct[]}): JSX.Element => {
     return (
         <div className='product-field-catalog'>
-            {props.products.map(product => {
-                return (
-                    <Product key={product.id} product={product}/>
-                )
-            })}
+            {
+                props.products.length
+                ? props.products.map(product => {
+                    return (
+                        <Product key={product.id} product={product}/>
+                    )
+                })
+                : <h1 style={{color:"white"}}>Ничего не найдено</h1>
+            }
         </div>
     )
 }

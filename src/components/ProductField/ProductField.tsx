@@ -2,12 +2,14 @@ import React from 'react';
 import '../ProductField/ProductField.css';
 import ProductFieldCatalog from '../ProductFieldCatalog/ProductFieldCatalog';
 import ProductFieldHeader from '../ProductFieldHeader/ProductFieldHeader';
-import { data } from '../products';
-import { useQuery } from 'react-query';
 import { IProduct } from '../types';
 
-const ProductField = (): JSX.Element => {
-    const [products, setProducts] = React.useState(data.products);
+const ProductField = (props:{products:IProduct[]}): JSX.Element => {
+    const [products, setProducts] = React.useState(props.products);
+    React.useEffect(() =>{
+        setProducts(props.products);
+    },[props.products])
+
     const [filter, setFilter] = React.useState({ sort: '', query: '' });
     const sortedProducts = React.useMemo(() => {
         if (filter.sort) {

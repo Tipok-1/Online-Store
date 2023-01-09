@@ -85,7 +85,7 @@ const BasketPage = (): JSX.Element => {
 
     return (
         <div className="basket-page">
-            <Header />
+            
 
             <div className="basket-page-field">
                 <div
@@ -229,8 +229,6 @@ const BasketPage = (): JSX.Element => {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </div>
     );
 };
