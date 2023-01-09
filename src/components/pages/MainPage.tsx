@@ -11,9 +11,7 @@ const MainPage = (): JSX.Element => {
     
     return (
         <div className="main-page">
-            <Header/>
             <Field/>
-            <Footer/>
         </div>
     )
 }

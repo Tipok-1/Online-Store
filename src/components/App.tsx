@@ -6,6 +6,8 @@ import StartPage from './pages/ProductPage';
 import ProductPage from './pages/ProductPage';
 import { IStore } from './types';
 import BasketPage from './pages/BasketPage';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 const DEFAULT_STORE: IStore = {
     products: [],
@@ -23,12 +25,14 @@ export default function App() {
     const store = useState<IStore>(DEFAULT_STORE);
     return (
         <Store.Provider value={store}>
+            <Header/>
             <Routes>
-                <Route path="/" element={<MainPage />} />
+                <Route path="/dist/index.html" element={<MainPage />}/>
                 <Route path="product/:id" element={<ProductPage />} />
                 <Route path="basket" element={<BasketPage/>} />
                 <Route path="*" element={<StartPage />} />
             </Routes>
+            <Footer/>
         </Store.Provider>
     );
 }

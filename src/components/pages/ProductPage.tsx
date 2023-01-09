@@ -18,11 +18,10 @@ const ProductPage = (): JSX.Element => {
 
     return (
         <div className="product-page">
-            <Header />
+            
             <div className="product-page-main">
                 {currentProduct && <Product product={currentProduct} />}
             </div>
-            <Footer />
         </div>
     );
 };
