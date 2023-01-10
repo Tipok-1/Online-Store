@@ -14,7 +14,7 @@ export interface IProduct {
 
 export interface IOption {
     value?: string;
-    name?: string;
+    name: string;
 }
 
 export interface IStore {
