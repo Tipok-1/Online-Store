@@ -29,10 +29,10 @@ export default function App() {
         <Store.Provider value={store}>
             <Header/>
             <Routes>
-                <Route path="/" element={<MainPage />}/>
+                <Route path="" element={<MainPage />}/>
                 <Route path="/product/:id" element={<ProductPage />} />
                 <Route path="/basket" element={<BasketPage/>} />
-                <Route path="*" element={<Navigate to="/"/>} />
+                <Route path="*" element={<Navigate to=""/>} />
             </Routes>
             <Footer/>
         </Store.Provider>
