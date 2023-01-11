@@ -1,15 +1,12 @@
-import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import React, { useContext, useState, useEffect } from 'react';
+import { Button, Dropdown } from 'react-bootstrap';
 import { Store } from '../App';
-import { data } from '../products';
 import Product from '../Product/Product';
-import { IProduct, IStore } from '../types';
+import { IProduct } from '../types';
 import { countAllPrice } from '../helpers';
-import Pagination from 'react-bootstrap/Pagination';
-import DropdownItem from 'react-bootstrap/esm/DropdownItem';
-import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
+import ModalPage from './ModalPage';
+
+
 
 const BasketPage = (): JSX.Element => {
     const [store, setStore] = useContext(Store)!;
@@ -17,6 +14,7 @@ const BasketPage = (): JSX.Element => {
     const numbersProductsInPage = [1, 3, 5, 10, 25];
     const [currentNumbersProducts, setCurrentNumbersProducts] = useState<number>(1);
     const [page, setPage] = useState<number>(1);
+
 
     useEffect(() => {
         if (page !== 1 && (uniqProducts.length % currentNumbersProducts) === 0 && (uniqProducts.length / currentNumbersProducts) < page) {
@@ -80,12 +78,12 @@ const BasketPage = (): JSX.Element => {
             setPage(page - 1)
         }
     };
-
+    const [modalOpen, setModalOpen] = useState(false);
 
 
     return (
         <div className="basket-page">
-            
+
 
             <div className="basket-page-field">
                 <div
@@ -225,7 +223,16 @@ const BasketPage = (): JSX.Element => {
                         >
                             Total: € {countAllPrice(store.products)}
                         </div>
-                        <Button>BUY NOW</Button>
+                        <Button
+                            style={{ margin: '10px 0' }}
+                            onClick={() => { setModalOpen(true) }}
+                            disabled={!store.products.length}
+                        >
+                            BUY NOW
+                        </Button>
+                        {modalOpen && <ModalPage setOpenModal={setModalOpen} />}
+
+
                     </div>
                 </div>
             </div>
