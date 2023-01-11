@@ -4,6 +4,7 @@ import '../App.css'
 import { Button } from "react-bootstrap";
 import { IProduct, IOption } from "../types";
 import Category from "../Category/Category";
+import SliderSort from "../../SliderSort/SliderSort";
 
 
 const Toolbar = (props:{products:IProduct[],WasSetFilter:(arr:IProduct[]) => void}): JSX.Element => {
@@ -65,17 +66,82 @@ const Toolbar = (props:{products:IProduct[],WasSetFilter:(arr:IProduct[]) => voi
         return products.filter(el => sortedByCategory.includes(el) && sortedByBrand.includes(el));
     },[sortedByBrand, sortedByCategory])
 
+     /*Sliders*/
+     let [lastLength, setLastLength] = React.useState(0);
+     const [minPrice, setMinPrice] = React.useState(0);
+     const [maxPrice, setMaxPrice] = React.useState(0);
+     const [min, setMin] = React.useState(0);
+     const [max, setMax] = React.useState(0);
+     const [minStock, setMinStock] = React.useState(0);
+     const [maxStock, setMaxStock] = React.useState(0);
+     const [minS, setMinS] = React.useState(0);
+     const [maxS, setMaxS] = React.useState(0);
+     const [reset, setReset] = React.useState(false);
+     /* */
+     function ChangePrice(obj:{min:number,max:number}){       
+         setMin(obj.min);
+         setMax(obj.max);         
+     }
+     function ChangeStock(obj:{min:number,max:number}){
+        setMinS(obj.min);
+        setMaxS(obj.max);         
+    }
+    /* */
+    const AllSorted = useMemo(() =>{
+        return sortedBrandAndCategory.filter(el => (el.price >= min && el.price <= max))
+        .filter(el => (el.stock >= minS && el.stock <= maxS));
+       
+    },[sortedBrandAndCategory, min, max, minS, maxS])
+
+     useEffect(() =>{
+        if(AllSorted .length != lastLength)
+        {   
+            setLastLength(AllSorted .length);
+            props.WasSetFilter(AllSorted );
+        }
+     },[AllSorted ])
+
     useEffect(() =>{
-        props.WasSetFilter(sortedBrandAndCategory);
+        let min = 1000;
+        let max = 0;
+        let mnSt = 1000;
+        let mxSt = 0;
+        sortedBrandAndCategory.forEach((el) =>{
+            if(el.price <= min){min = el.price;}
+            if(el.price >= max){max = el.price;}
+            if(el.stock <= mnSt){mnSt = el.stock}
+            if(el.stock >= mxSt){mxSt = el.stock}
+        })
+        setMinPrice(min);
+        setMaxPrice(max);
+        setMinStock(mnSt);
+        setMaxStock(mxSt);
     },[sortedBrandAndCategory])
 
-    const [reset, setReset] = React.useState(false);
     function resetFilter(){
         setFilter({category:[],brand:[]});
+        setMinPrice(0);
+        setMaxPrice(0);
+        setMinStock(0);
+        setMaxStock(0);
         setReset(true)
     }
+
     return (
         <div className='toolbar'>
+            <SliderSort
+                title={'Price'}
+                 min={minPrice}
+                 max={maxPrice}
+                 onChange={ChangePrice}
+                 postscript={'€'}
+            ></SliderSort>
+            <SliderSort
+                title={'Stock'}
+                 min={minStock}
+                 max={maxStock}
+                 onChange={ChangeStock}
+            ></SliderSort>
             <Category 
                 options={firstFilter} 
                 title={'Category'} 
