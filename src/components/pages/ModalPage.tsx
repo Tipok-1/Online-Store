@@ -7,7 +7,7 @@ import 'yup-phone';
 import { Store } from '../App';
 
 
-const ModalPage = ({ setOpenModal }) => {
+const ModalPage = ({ setOpenModal}:{setOpenModal:Function}) => {
     const [isSuccessOrder, setIsSuccessOrder] = useState<boolean>(false);
     const [store, setStore] = useContext(Store)!;
 
