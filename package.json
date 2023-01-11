@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Tipok-1/Online-Store/issues"
   },
-  "homepage": "https://github.com/Tipok-1/Online-Store#readme",
+  "homepage": "https://tipok-1.github.io/Online-Store/dist",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
