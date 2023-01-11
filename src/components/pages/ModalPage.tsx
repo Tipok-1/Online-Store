@@ -11,11 +11,11 @@ const ModalPage = ({ setOpenModal }) => {
     const [isSuccessOrder, setIsSuccessOrder] = useState<boolean>(false);
     const [store, setStore] = useContext(Store)!;
 
-    useEffect(() => {
-        if (isSuccessOrder) {
-            setTimeout(() => window.open("https://tipok-1.github.io/Online-Store/dist/", "_self"), 3000)
-        }
-    }, [isSuccessOrder])
+    // useEffect(() => {
+    //     if (isSuccessOrder) {
+    //         setTimeout(() => window.open("https://tipok-1.github.io/Online-Store/dist/", "_self"), 3000)
+    //     }
+    // }, [isSuccessOrder])
 
     const SignupSchema = Yup.object().shape({
         name: Yup.string()
