@@ -176,3 +176,53 @@ body {
 }
 
 /**/
+
+.modalBackground {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.modalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    align-items: center;
+}
+
+.modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: -200px;
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+    font-size: 20px;
+}

@@ -9,7 +9,6 @@ import BasketPage from './pages/BasketPage';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
-// import 'rc-pagination/dist/rc-pagination.css';>>>>>>> gh-pages
 
 const DEFAULT_STORE: IStore = {
     products: [],
@@ -22,7 +21,6 @@ function useStoreData() {
 type UseStoreDataReturnType = ReturnType<typeof useStoreData>
 
 export const Store = createContext<UseStoreDataReturnType | null>(null);
-alert("Уважаемый проверяющий, проверь пожалуйста в конце кросс-чека");
 export default function App() {
     const store = useState<IStore>(DEFAULT_STORE);
     return (
