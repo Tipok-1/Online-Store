@@ -3,7 +3,7 @@ import OneCategory from "../OneCategory/OneCategory";
 import { IOption, IProduct } from "../types";
 import './Category.css'
 
-interface ICategoty {
+interface ICategory {
   options: IOption[],
   title: string,
   filter: string[],
@@ -15,7 +15,7 @@ interface ICategoty {
   setReset: () => void
 }
 
-const Category = (props: ICategoty): JSX.Element => {
+const Category = (props: ICategory): JSX.Element => {
   const sortedByCategory = React.useMemo(() => {
     let arr = [...props.products];
     if (props.filter.length) {

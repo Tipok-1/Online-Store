@@ -13,12 +13,13 @@ const DEFAULT_STORE: IStore = {
   products: [],
 }
 
-function useStoreData() {
+export function useStoreData() {
   const store = useState<IStore>(DEFAULT_STORE);
   return store;
 }
 
-type UseStoreDataReturnType = ReturnType<typeof useStoreData>
+export type UseStoreDataReturnType = ReturnType<typeof useStoreData>
+
 export const Store = createContext<UseStoreDataReturnType | null>(null);
 
 export default function App() {

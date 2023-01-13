@@ -7,8 +7,9 @@ import '../Basket/Basket.css';
 
 const Basket = (): JSX.Element => {
   const router = useNavigate();
+  const basketUrl = '/basket';  
+
   const [store] = useContext(Store)!;
-  const basketUrl = '/basket';
 
   return (
     <div className="basket">

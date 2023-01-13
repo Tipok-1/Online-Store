@@ -11,7 +11,7 @@ const Toolbar = (props: { products: IProduct[], WasSetFilter: (arr: IProduct[]) 
   const resetFilters = 'Reset Filters';
 
   const [filter, setFilter] = React.useState<{ category: string[], brand: string[] }>({ category: [], brand: [] });
-  const [products, setProducts] = React.useState(props.products);
+  const [products] = React.useState(props.products);
 
 
   function getUniqOption(point: string): IOption[] {

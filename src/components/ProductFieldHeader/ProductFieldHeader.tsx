@@ -3,8 +3,8 @@ import Found from "../Found/Found";
 import SearchProduct from "../SearchProduct/SearchProduct";
 import SortOptions from "../SortOptions/SortOptions";
 import { IOption } from "../types"
-import '../ProductFieldHeader/ProductFieldHeader.css'
 import { discountASC, discountDESC, priceASC, priceDESC, ratingASC, ratingDESC } from "../ProductField/ProductField";
+import '../ProductFieldHeader/ProductFieldHeader.css'
 
 interface IFilter {
   sort: string,
@@ -12,6 +12,8 @@ interface IFilter {
 }
 
 const ProductFieldHeader = (props: { filter: IFilter, setFilter: Function, found: number }): JSX.Element => {
+  console.log(props.setFilter);
+  
   const sortBy = 'Sort by';
   const options: IOption[] = [
     { value: priceASC, name: `${sortBy} ${priceASC}` },

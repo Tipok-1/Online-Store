@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { IProduct } from '../types';
 import { Store } from '../App';
 import '../Product/Product.css';
@@ -25,9 +25,7 @@ const Product = ({ product }: IPropsProduct): JSX.Element => {
   const [store, setStore] = useContext(Store)!;
   const location = useLocation();
 
-  const isBusketProduct = () => store.products.includes(product);
-
-  const hundred = '100%';
+  const isBasketProduct = () => store.products.includes(product);
 
   const addProduct = () => {
     setStore({
@@ -52,7 +50,7 @@ const Product = ({ product }: IPropsProduct): JSX.Element => {
       style={{
         backgroundImage: `url(${thumbnail})`,
         width:
-          isBusketProduct() && location.pathname === '/basket'
+          isBasketProduct() && location.pathname === '/basket'
             ? '100%'
             : '',
       }}
@@ -67,7 +65,7 @@ const Product = ({ product }: IPropsProduct): JSX.Element => {
         <p>Stock: {stock}</p>
       </div>
       <div className="product__btns">
-        {isBusketProduct() ? (
+        {isBasketProduct() ? (
           <button
             className="btn btn-primary"
             onClick={() => removeProduct()}
