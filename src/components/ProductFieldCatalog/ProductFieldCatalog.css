@@ -1,4 +1,4 @@
-.product-field-catalog {
+.product__field__catalog {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,9 +7,9 @@
     width: 100%;
     background: #2C7873;
 }
-/*Adaptive*/
+
 @media only screen and (max-width: 1100px){
-    .product-field-catalog {
+    .product__field__catalog {
         padding:0;
     }
 }

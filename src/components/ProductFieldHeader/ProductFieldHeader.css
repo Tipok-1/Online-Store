@@ -1,4 +1,4 @@
-.product-field-header {
+.product__field__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,8 +8,9 @@
     border: 2px solid #021C1E;
     border-radius: 10px;
 }
+
 @media only screen and (max-width: 870px){
-    .product-field-header{
+    .product__field__header{
         flex-direction: column;
     }
 }

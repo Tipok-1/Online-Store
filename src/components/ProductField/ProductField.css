@@ -1,4 +1,4 @@
-.product-field {
+.product__field {
     display: flex;
     position: relative;
     justify-content: space-between;
@@ -10,8 +10,9 @@
     border: 2px solid #021C1E;
     border-radius: 10px;
 }
+
 @media only screen and (max-width: 580px){
-    .product-field{
+    .product__field{
         width:100%;
         margin-top: 10px;
     }
