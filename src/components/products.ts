@@ -1,13 +1,3 @@
-import axios from "axios"
-
-
-export const ProductService = {
-  async getAll() {
-    return axios.get("https://dummyjson.com/products?limit=100");
-
-  }
-}
-
 export const data = {
   products:
     [

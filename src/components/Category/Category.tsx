@@ -12,7 +12,7 @@ interface ICategory {
   property: string,
   returnedArray: (arr: IProduct[]) => void,
   reset: boolean,
-  setReset: () => void
+  setReset: (arg: boolean) => void
 }
 
 const Category = (props: ICategory): JSX.Element => {

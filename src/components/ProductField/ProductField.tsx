@@ -22,6 +22,7 @@ const ProductField = (props: { products: IProduct[] }): JSX.Element => {
   }, [props.products])
 
   const [filter, setFilter] = React.useState({ sort: '', query: '' });
+  
   const sortedProducts = React.useMemo(() => {
     if (filter.sort) {
       if (filter.sort === priceASC) {

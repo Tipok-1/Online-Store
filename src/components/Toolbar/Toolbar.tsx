@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { IProduct, IOption } from "../types";
 import Category from "../Category/Category";
-import SliderSort from "../../SliderSort/SliderSort";
+import SliderSort from "../SliderSort/SliderSort";
 import '../Toolbar/Toolbar.css'
 import '../App.css'
 
@@ -17,10 +17,10 @@ const Toolbar = (props: { products: IProduct[], WasSetFilter: (arr: IProduct[]) 
   function getUniqOption(point: string): IOption[] {
     const uniqCategory: Set<string> = new Set();
 
-    props.products.forEach(p => {
-      if (p.hasOwnProperty(point)) {
+    props.products.forEach(product => {
+      if (Object.prototype.hasOwnProperty.call(product, point)) {
         const key = point as keyof IProduct;
-        uniqCategory.add(p[key] as string);
+        uniqCategory.add(product[key] as string);
       }
     });
     const CategoryWhithValues: IOption[] = [];

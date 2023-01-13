@@ -11,9 +11,7 @@ interface IFilter {
   query: string
 }
 
-const ProductFieldHeader = (props: { filter: IFilter, setFilter: Function, found: number }): JSX.Element => {
-  console.log(props.setFilter);
-  
+const ProductFieldHeader = (props: { filter: IFilter, setFilter: React.Dispatch<React.SetStateAction<{ sort: string; query: string; }>>, found: number }): JSX.Element => {
   const sortBy = 'Sort by';
   const options: IOption[] = [
     { value: priceASC, name: `${sortBy} ${priceASC}` },

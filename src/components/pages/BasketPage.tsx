@@ -89,7 +89,7 @@ const BasketPage = (): JSX.Element => {
           <div className="basket-page__field__description">
             <div className="basket-page__title">
               Product in Cart
-              <p className="border">
+              <div className="border">
                 ITEMS:
                 <Dropdown style={{ marginLeft: 5 }}>
                   <Dropdown.Toggle>
@@ -104,6 +104,7 @@ const BasketPage = (): JSX.Element => {
                               currentNumbersProducts ===
                               option
                             }
+                            key={option}
                             onClick={() => {
                               setCurrentNumbersProducts(
                                 option
@@ -119,7 +120,7 @@ const BasketPage = (): JSX.Element => {
                     )}
                   </Dropdown.Menu>
                 </Dropdown>
-              </p>
+              </div>
               <div className="basket-page__field__choose-pages border ">
                 PAGES:
                 <div
@@ -148,14 +149,13 @@ const BasketPage = (): JSX.Element => {
                 ?
                 uniqProducts
                   .map((product: IProduct, index: number) => (
-                    <div className="basket-page__catalog">
+                    <div className="basket-page__catalog" key={product.id}>
                       <div className="basket-page__number-product">
                         <div className="count-product__circle">
                           {index + 1}.
                         </div>
                       </div>
                       <Product
-                        key={product.id}
                         product={product}
                       />
                       <div className="count-product">
