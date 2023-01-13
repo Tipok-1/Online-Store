@@ -1,0 +1,222 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#root {
+    min-height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.main-page {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    position: relative;
+    width: 100%;
+}
+
+.field {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.product-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.product-page-main {
+    background-color: #6fb98f;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.basket-page {
+    flex: 1 1 auto;
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
+}
+
+.basket-page__field {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: #6fb98f;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 25px;
+}
+
+.basket-page__field-option {
+    width: 1200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: #6FB98F;
+}
+
+.basket-page__field__description {
+    width: 60%;
+    border: 1px solid white;
+    border-radius: 9px;
+    min-width: 300px;
+}
+
+.basket-page__title {
+    font-size: 25px;
+    border: 1px solid white;
+    border-radius: 9px;
+    padding: 5px;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basket-page__choose-number {
+    width: 50px;
+    margin-left: 10px;
+}
+
+.basket-page__field__choose-pages {
+    display: flex;
+    align-items: center;
+}
+
+.basket-page__field__description__catalog {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.basket-page__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 9px;
+    width: 30%;
+}
+
+.basket-page__catalog {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.count-product {
+    display: flex;
+    width: 30%;
+    margin: 5px;
+    align-items: center;
+}
+
+.count-product__number {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.count-product__circle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background-color: white;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.basket-page__number-product {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.border {
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 3px;
+    display: flex;
+    margin: 3px;
+}
+
+.modalBackground {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.modalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    align-items: center;
+}
+
+.modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: -200px;
+}
+
+.titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+    font-size: 20px;
+}

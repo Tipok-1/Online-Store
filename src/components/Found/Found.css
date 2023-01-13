@@ -1,0 +1,10 @@
+.found {
+    display: flex;
+    color: white;
+    font-size: 20px;
+}
+@media only screen and (max-width: 870px){
+    .found {
+        order:-1;
+    }
+}
