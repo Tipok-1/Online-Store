@@ -1,38 +1,44 @@
 import React, { createContext, useState } from 'react';
 import MainPage from './pages/MainPage';
-import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import StartPage from './pages/ProductPage';
 import ProductPage from './pages/ProductPage';
 import { IStore } from './types';
 import BasketPage from './pages/BasketPage';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import './App.css';
 
 
 const DEFAULT_STORE: IStore = {
-    products: [],
+  products: [],
 }
 
 function useStoreData() {
-    const store = useState<IStore>(DEFAULT_STORE);
-    return store;
+  const store = useState<IStore>(DEFAULT_STORE);
+  return store;
 }
-type UseStoreDataReturnType = ReturnType<typeof useStoreData>
 
+type UseStoreDataReturnType = ReturnType<typeof useStoreData>
 export const Store = createContext<UseStoreDataReturnType | null>(null);
+
 export default function App() {
-    const store = useState<IStore>(DEFAULT_STORE);
-    return (
-        <Store.Provider value={store}>
-            <Header/>
-            <Routes>
-                <Route path="" element={<MainPage />}/>
-                <Route path="/product/:id" element={<ProductPage />} />
-                <Route path="/basket" element={<BasketPage/>} />
-                <Route path="*" element={<Navigate to=""/>} />
-            </Routes>
-            <Footer/>
-        </Store.Provider>
-    );
+  const emptyPath = "";
+  const productPagePath = "/product/:id";
+  const basketPagePath = "/basket";
+  const starPath = "*";
+
+  const store = useState<IStore>(DEFAULT_STORE);
+
+  return (
+    <Store.Provider value={store}>
+      <Header />
+      <Routes>
+        <Route path={`${emptyPath}`} element={<MainPage />} />
+        <Route path={`${productPagePath}`} element={<ProductPage />} />
+        <Route path={`${basketPagePath}`} element={<BasketPage />} />
+        <Route path={`${starPath}`} element={<Navigate to="" />} />
+      </Routes>
+      <Footer />
+    </Store.Provider>
+  );
 }

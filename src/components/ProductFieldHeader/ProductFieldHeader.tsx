@@ -1,40 +1,43 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import Found from "../Found/Found";
-import '../ProductFieldHeader/ProductFieldHeader.css'
 import SearchProduct from "../SearchProduct/SearchProduct";
 import SortOptions from "../SortOptions/SortOptions";
 import { IOption } from "../types"
+import '../ProductFieldHeader/ProductFieldHeader.css'
+import { discountASC, discountDESC, priceASC, priceDESC, ratingASC, ratingDESC } from "../ProductField/ProductField";
 
 interface IFilter {
-    sort: string,
-    query: string
+  sort: string,
+  query: string
 }
+
 const ProductFieldHeader = (props: { filter: IFilter, setFilter: Function, found: number }): JSX.Element => {
+  const sortBy = 'Sort by';
+  const options: IOption[] = [
+    { value: priceASC, name: `${sortBy} ${priceASC}` },
+    { value: priceDESC, name: `${sortBy} ${priceDESC}` },
+    { value: ratingASC, name: `${sortBy} ${ratingASC}` },
+    { value: ratingDESC, name: `${sortBy} ${ratingDESC}` },
+    { value: discountASC, name: `${sortBy} ${discountASC}` },
+    { value: discountDESC, name: `${sortBy} ${discountDESC}` },
+  ];
 
-    let options: IOption[] = [
-        { value: "price-ASC", name: "Sort by price ASC" },
-        { value: "price-DESC", name: "Sort by price DESC" },
-        { value: "rating-ASC", name: "Sort by rating ASC" },
-        { value: "rating-DESC", name: "Sort by rating DESC" },
-        { value: "discount-ASC", name: "Sort by discount ASC" },
-        { value: "discount-DESC", name: "Sort by discount DESC" },
-    ];
-    const onChangeSearch = React.useCallback((e: React.ChangeEvent<HTMLInputElement>): void => props.setFilter({ ...props.filter, query: (e.target as HTMLInputElement).value })
-        , []);
+  const onChangeSearch = React.useCallback((e: React.ChangeEvent<HTMLInputElement>): void => props.setFilter({ ...props.filter, query: (e.target as HTMLInputElement).value })
+    , []);
 
-    return (
-        <div className='product-field-header'>
-            <SortOptions
-                value={props.filter.sort}
-                onChange={selectedSort => props.setFilter({ ...props.filter, sort: selectedSort })}
-                options={options} />
-            <Found found={props.found} />
-            <SearchProduct
-                value={props.filter.query}
-                onChange={onChangeSearch}
-            />
-        </div>
-    )
+  return (
+    <div className='product__field__header'>
+      <SortOptions
+        value={props.filter.sort}
+        onChange={selectedSort => props.setFilter({ ...props.filter, sort: selectedSort })}
+        options={options} />
+      <Found found={props.found} />
+      <SearchProduct
+        value={props.filter.query}
+        onChange={onChangeSearch}
+      />
+    </div>
+  )
 }
 
 export default ProductFieldHeader;

@@ -16,6 +16,7 @@
 .slider__range {
   position: absolute;
 }
+
 .Values{
   height: 20px;
   position: absolute;
@@ -24,6 +25,7 @@
   align-self: flex-start;
   display:flex;
 }
+
 .slider__track,
 .slider__range {
   border-radius: 3px;
@@ -57,7 +59,6 @@
   right: -4px;
 }
 
-/* Removing the default appearance */
 .thumb,
 .thumb::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -80,7 +81,6 @@
   z-index: 4;
 }
 
-/* For Chrome browsers */
 .thumb::-webkit-slider-thumb {
   background-color: #f1f5f7;
   border: none;
@@ -95,7 +95,6 @@
   border:1px solid black;
 }
 
-/* For Firefox browsers */
 .thumb::-moz-range-thumb {
   background-color: #f1f5f7;
   border: none;

@@ -7,6 +7,7 @@
     width:40%;
     padding: 2px;
 }
+
 @media only screen and (max-width: 870px){
     .search-product{
         width: 80%;
