@@ -9,9 +9,11 @@ const ProductField = (props:{products:IProduct[]}): JSX.Element => {
     React.useEffect(() =>{
         setProducts(props.products);
     },[props.products])
-
+    
     const [filter, setFilter] = React.useState({ sort: '', query: '' });
     const sortedProducts = React.useMemo(() => {
+        //console.log(filter.sort);
+        
         if (filter.sort) {
             if (filter.sort === 'price-ASC') {
                 return [...products].sort((a, b) => a['price'] - b['price']);
@@ -40,6 +42,7 @@ const ProductField = (props:{products:IProduct[]}): JSX.Element => {
     }, [filter.sort, products]);
 
     const searchAndSortedProducts = React.useMemo(() => {
+        //console.log(filter.query);
         if (filter.query) {
             return sortedProducts.filter((product: IProduct) =>
                 (product.title as string)

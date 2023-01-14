@@ -4,7 +4,7 @@ import '../App.css'
 import { Button } from "react-bootstrap";
 import { IProduct, IOption } from "../types";
 import Category from "../Category/Category";
-import SliderSort from "../../SliderSort/SliderSort";
+import SliderSort from "../SliderSort/SliderSort";
 
 
 const Toolbar = (props:{products:IProduct[],WasSetFilter:(arr:IProduct[]) => void}): JSX.Element => {

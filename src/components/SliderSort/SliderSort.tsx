@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from '../components/Slider/Slider';
+import Slider from '../Slider/Slider';
 import './SliderSort.css';
 
 interface ISliderSort{
