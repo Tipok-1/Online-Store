@@ -1,0 +1,16 @@
+.search-product {
+    display: flex;
+    color: black;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width:40%;
+    padding: 2px;
+}
+
+@media only screen and (max-width: 870px){
+    .search-product{
+        width: 80%;
+        margin-top: 5px;
+    }
+}

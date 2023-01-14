@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
-module.exports = ({ mode }) => {
+module.exports = ({ mode, slash }) => {
     const isProductionMode = mode === 'prod';
     const isDev = !isProductionMode;
-
+    const sl = String(slash);
     const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 
     const baseConfig = {
@@ -32,6 +32,7 @@ module.exports = ({ mode }) => {
         output: {
             filename: filename('js'),
             path: path.resolve(__dirname, './dist'),
+            publicPath: sl
         },
         module: {
             rules: [

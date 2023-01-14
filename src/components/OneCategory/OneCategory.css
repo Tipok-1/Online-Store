@@ -1,0 +1,10 @@
+.categories {
+    width: 100%;
+    font-size: 130%;
+}
+
+.categories__name {
+    color: white;
+    margin-left: 3px;
+    cursor: pointer;
+}

@@ -1,0 +1,15 @@
+.product__field__catalog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    width: 100%;
+    background: #2C7873;
+}
+
+@media only screen and (max-width: 1100px){
+    .product__field__catalog {
+        padding:0;
+    }
+}
