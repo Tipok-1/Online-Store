@@ -12,6 +12,7 @@
     margin-top: 10px;
     overflow: hidden;
 }
+
 .categories__field::-webkit-scrollbar{
     cursor: pointer;
     width: 13px;
@@ -20,6 +21,7 @@
     outline: 1px solid rgb(1, 50, 70);
     border-radius: 10px;
 }
+
 .categories__field::-webkit-scrollbar-thumb{
     position: absolute;
     z-index: 1;

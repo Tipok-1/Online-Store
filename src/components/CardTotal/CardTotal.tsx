@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { Store } from "../App";
-import '../CardTotal/CardTotal.css'
 import { countAllPrice } from "../helpers";
-import { IStore } from "../types";
+import '../CardTotal/CardTotal.css'
 
 
 const CardTotal = (): JSX.Element => {

@@ -1,22 +1,22 @@
 export interface IProduct {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    rating: number;
-    stock: number;
-    brand: string;
-    category: string;
-    thumbnail: string;
-    images: string[];
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
 }
 
 export interface IOption {
-    value?: string;
-    name: string;
+  value?: string;
+  name: string;
 }
 
 export interface IStore {
-    products: IProduct[];
+  products: IProduct[];
 }

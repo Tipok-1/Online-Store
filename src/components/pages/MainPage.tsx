@@ -3,11 +3,11 @@ import Field from "../Field/Field";
 
 
 const MainPage = (): JSX.Element => {
-    return (
-        <div className="main-page">
-            <Field/>
-        </div>
-    )
+  return (
+    <div className="main-page">
+      <Field />
+    </div>
+  )
 }
 
 export default MainPage;
